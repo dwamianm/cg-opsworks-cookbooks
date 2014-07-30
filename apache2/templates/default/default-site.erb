@@ -2,7 +2,7 @@
   ServerName 127.0.0.1
   ServerAdmin <%= node[:apache][:contact] %>
 
-  DocumentRoot /var/www/
+  DocumentRoot /srv/www/nation_v2/current
   
   <Directory />
     Options FollowSymLinks
@@ -12,6 +12,16 @@
   <Directory /var/www/>
     Options -Indexes FollowSymLinks MultiViews
     AllowOverride None
+    Order allow,deny
+    allow from all
+    # This directive allows us to have apache2's default start page
+    # in /apache2-default/, but still have / go to the right place
+    #RedirectMatch ^/$ /apache2-default/
+  </Directory>
+  
+  <Directory /srv/www/nation_v2/current>
+    Options -Indexes FollowSymLinks MultiViews
+    AllowOverride All
     Order allow,deny
     allow from all
     # This directive allows us to have apache2's default start page
