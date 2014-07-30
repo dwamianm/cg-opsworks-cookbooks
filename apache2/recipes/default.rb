@@ -200,10 +200,10 @@ bash 'logdir_existence_and_restart_apache2' do
   action :run
 end
 
-file "#{node[:apache][:document_root]}/index.html" do
+file "#{node[:apache][:document_root]}/index.php" do
   action :delete
   backup false
   only_if do
-    File.exists?("#{node[:apache][:document_root]}/index.html")
+    File.exists?("#{node[:apache][:document_root]}/index.php")
   end
 end
