@@ -207,3 +207,21 @@ file "#{node[:apache][:document_root]}/index.php" do
     File.exists?("#{node[:apache][:document_root]}/index.php")
   end
 end
+
+directory "#{node[:apache][:document_root]}" do
+  mode 0777
+  group 'apache'
+  owner 'apache'
+  only_if do
+    Dir.exists?("#{node[:apache][:document_root]}")
+  end
+end
+
+directory "#{node[:apache][:document_root]}/assets" do
+  mode 0777
+  group 'apache'
+  owner 'apache'
+  only_if do
+    Dir.exists?("#{node[:apache][:document_root]}/assets")
+  end
+end
