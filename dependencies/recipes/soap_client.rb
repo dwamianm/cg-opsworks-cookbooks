@@ -1,4 +1,4 @@
-execute 'sudo yum install php-soap' do
+execute 'yum install php-soap' do
       action :run
 end
 
