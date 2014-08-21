@@ -1,5 +1,5 @@
-execute 'yum install php-soap' do
-      action :run
+yum_package "php-soap" do
+  action :install
 end
 
 service 'httpd' do 
