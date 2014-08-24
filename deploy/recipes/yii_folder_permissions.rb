@@ -7,14 +7,4 @@ node[:deploy].each do |application, deploy|
     command "chmod -Rf 777 #{assets_folder} #{runtime_folder}"
   end
 
-  staging_env_file = "#{deploy[:deploy_to]}/current/env.php"
-  prod_env_file = "#{deploy[:deploy_to]}/current/chef/deploy/env.php"
-
-  file "#{staging_env_file}" do
-    action :delete
-  end
-  execute "cp #{prod_env_file} #{deploy[:deploy_to]}/current/" do
-      command "cp #{prod_env_file} #{deploy[:deploy_to]}/current/"
-  end
-
 end
