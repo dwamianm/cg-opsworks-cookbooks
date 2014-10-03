@@ -10,7 +10,6 @@ node[:deploy].each do |application, deploy|
     group deploy[:group]
     svn_username deploy[:scm][:user]
     svn_password deploy[:scm][:password]
-    provider Chef::Provider::SubversionInit
     action :sync
   end
 
