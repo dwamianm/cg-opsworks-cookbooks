@@ -4,7 +4,6 @@ node[:deploy].each do |application, deploy|
 
   git "Update Git" do
     repository deploy[:scm][:repository]
-    revision "master"
     destination "#{application_folder}"
     user deploy[:user]
     group deploy[:group]
