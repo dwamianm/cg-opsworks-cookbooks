@@ -5,6 +5,7 @@ node[:deploy].each do |application, deploy|
   git "Update Git" do
     repository deploy[:git_repository]
     destination "#{application_folder}"
+    user "mcleish@cornersix.com"
     action :sync
   end
 
