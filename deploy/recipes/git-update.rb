@@ -5,6 +5,7 @@ node[:deploy].each do |application, deploy|
   git "Update Git" do
     repository deploy[:scm][:repository]
     destination "#{application_folder}"
+    ssh_key deploy[:scm][:ssh_key]
     action :sync
   end
 
