@@ -4,9 +4,12 @@ node[:deploy].each do |application, deploy|
 
   git "Update Git" do
     repository deploy[:scm][:repository]
+    revision "master"
     destination "#{application_folder}"
-    ssh_key deploy[:scm][:ssh_key]
-    username "mcleish@cornersix.com"
+    user deploy[:user]
+    group deploy[:group]
+    username deploy[:scm][:user]
+    password deploy[:scm][:password]
     action :sync
   end
 
