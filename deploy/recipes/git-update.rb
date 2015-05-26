@@ -7,8 +7,6 @@ node[:deploy].each do |application, deploy|
     destination "#{application_folder}"
     user deploy[:user]
     group deploy[:group]
-    username deploy[:scm][:user]
-    password deploy[:scm][:password]
     action :sync
   end
 
