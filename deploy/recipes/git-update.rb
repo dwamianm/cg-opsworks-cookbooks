@@ -3,10 +3,11 @@ node[:deploy].each do |application, deploy|
   application_folder = "#{deploy[:deploy_to]}/current"
 
   git "Update Git" do
-    repository node[:app_name][:git_repository]
-    revision node[:app_name][:git_revision]
+    repository deploy[:git_repository]
+    revision deploy[:git_revision]
+    destination "#{application_folder}"
     action :sync
-    notifies :run, "bash[compile_app_name]"
+    ssh_wrapper "ssh -i deploy[:scm][:ssh_key]"
   end
 
 end
