@@ -3,7 +3,7 @@ node[:deploy].each do |application, deploy|
   application_folder = "#{deploy[:deploy_to]}/current"
 
   subversion "Update SVN" do
-    repository deploy[:scm][:repository]
+    repository deploy[:scm][:git_repository]
     revision "HEAD"
     destination "#{application_folder}"
     user deploy[:user]
