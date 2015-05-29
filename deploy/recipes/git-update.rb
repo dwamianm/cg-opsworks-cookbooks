@@ -10,4 +10,6 @@ node[:deploy].each do |application, deploy|
     action :sync
   end
 
+  include_recipe 'deploy::update_env'  
+
 end
