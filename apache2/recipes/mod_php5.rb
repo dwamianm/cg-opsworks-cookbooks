@@ -23,7 +23,7 @@ when 'debian', 'ubuntu'
     action :install
   end  
 when 'centos', 'redhat', 'fedora', 'amazon'
-  package 'php' do
+  package 'php56' do
     action :install
     notifies :run, "execute[generate-module-list]", :immediately
     not_if 'which php'
